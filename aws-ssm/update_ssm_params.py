@@ -4,7 +4,7 @@ import boto3
 
 # Instructions #
 # Execution: python update_ssm_params.py parameters_list.txt
-# line(38) KMS_KEY_ID: hard code the kms key-id that you use to encrypt all the paramters
+# line(43) KMS_KEY_ID: hard code the kms key-id that you use to encrypt all the paramters
 # 
 # Permissions required for you
 # kms:Decrypt
