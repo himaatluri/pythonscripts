@@ -4,12 +4,12 @@ printf "[INFO]  Installing virtualenv python package.. make sure python version 
 pip3 install virtualenv
 
 printf "\n[INFO] Enabling virtual env...."
-virtualenv pythonscripts
+virtualenv .venv
 
 printf "\n[INFO] Activating virtual env...."
-source pythonscripts/bin/activate
+source .venv/bin/activate
 
 printf "\n[INFO] Installing requirements...."
-pythonscripts/bin/pip install -r requirements.txt
+.venv/bin/pip install -r requirements.txt
 
 printf "\n[INFO] env is setup...."
