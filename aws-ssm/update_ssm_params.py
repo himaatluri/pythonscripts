@@ -1,14 +1,16 @@
-import os
-import sys
-import boto3
-
 # Instructions #
 # Execution: python update_ssm_params.py parameters_list.txt
-# line(38) KMS_KEY_ID: hard code the kms key-id that you use to encrypt all the paramters
+# line(43) KMS_KEY_ID: hard code the kms key-id that you use to encrypt all the paramters
 # 
+# Author: Hima Atluri
+#
 # Permissions required for you
 # kms:Decrypt
 # ssm:PutParameter
+
+import os
+import sys
+import boto3
 
 # create the clients
 ssm = boto3.client('ssm')
