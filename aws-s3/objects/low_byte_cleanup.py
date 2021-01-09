@@ -1,23 +1,54 @@
+"""
+Script:
+-------
+Script to clean-up objects based on the size
+
+Version:
+--------
+0.0.1
+
+Author:
+-------
+Hima Atluri
+
+Instructions:
+-------------
+
+Execution: python low_byte_cleanup.py <bucket-name>
+
+Permissions required for the execution role
+s3:ListObjects
+s3:DeleteObjects
+"""
 import boto3
 
 # vars
-BUCKTNAME=""
-OBJECTSIZE=""
+BUCKTNAME="himaops-athena-dev"
+OBJECTSIZE=0
 
 # Clients
 s3 = boto3.client('s3')
 
-BucketName="himaops-athena-dev"
-BucketContents = {}
+ObjectsList = []
 
-def get_objects(BucketName):
-    resp=s3.list_objects_v2(
-        Bucket=BucketName
-    )
-    for k in resp['Contents']:
-        obj = k['Key']
-        BucketContents[BucketName] = obj
+paginator = s3.get_paginator('list_objects_v2')
+page_iterator = paginator.paginate(Bucket=BUCKTNAME)
 
-if __name__ == "__main__":
-    print(BucketContents)
-    pass
+for page in page_iterator:
+    ObjectsResponse=page['Contents']
+    for k in ObjectsResponse:
+        """
+        The `k` object looks like this:
+        {'Key': '24/testfile.txt', 'LastModified':
+        datetime.datetime(2021, 1, 6, 22, 43, 2, tzinfo=tzutc()), 
+        'ETag': '"d41d8cd98f00b204e9800998ecf8427e"', 'Size': 0,
+        'StorageClass': 'STANDARD'}
+        We try to extract the `Size` attribute and then compare to the 
+        required size and make a list out of it
+        """
+        if k['Size'] == OBJECTSIZE:
+            ObjectsList.append(k['Key'])
+        else:
+            pass
+
+print(ObjectsList)
