@@ -113,6 +113,6 @@ if ObjectsList != []:
         delete_selected_objects()
     else:
         print("Skipping the Delete operation..\
-        \nNo Objects are delted..")
+        \nNo Objects were deleted..")
 else:
     print("No Objects are found with the provided size. Size: ", OBJECTSIZE)
