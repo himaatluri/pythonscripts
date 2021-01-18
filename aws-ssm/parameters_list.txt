@@ -1,3 +1,0 @@
-/dba/app/db/name/tier/dbpass1
-/dba/app/db/name/tier/dbpass2
-/dba/app/db/name/tier/dbpass3
