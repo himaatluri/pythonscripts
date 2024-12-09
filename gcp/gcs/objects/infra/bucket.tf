@@ -1,6 +1,7 @@
 provider "google" {
   project = "qlys-dev"
 }
+
 resource "google_storage_bucket" "test_bucket" {
   name          = "hatluri-target-gcs-bucket"
   location      = "US"
