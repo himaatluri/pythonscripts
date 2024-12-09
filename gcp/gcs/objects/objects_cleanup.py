@@ -1,6 +1,5 @@
 from google.cloud import storage
 
-
 bucket_name = "hatluri-target-gcs-bucket"
 
 def upload_blob(bucket_name, source_file_name, destination_blob_name):
